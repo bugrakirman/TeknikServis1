@@ -89,7 +89,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="about.html" />
     <Content Include="Admin1\assets\extra-libs\calendar\calendar.css" />
     <Content Include="Admin1\assets\extra-libs\DataTables\DataTables-1.10.16\css\dataTables.bootstrap.css" />
     <Content Include="Admin1\assets\extra-libs\DataTables\DataTables-1.10.16\css\dataTables.bootstrap.min.css" />
@@ -1229,9 +1228,6 @@
     <Content Include="assets\js\vendor\jquery.nice-select.min.js" />
     <Content Include="assets\js\vendor\owl-carousel.min.js" />
     <Content Include="assets\js\vendor\wow.min.js" />
-    <Content Include="blog-details.html" />
-    <Content Include="blog-home.html" />
-    <Content Include="contact-us.html" />
     <Content Include="Content\about.html" />
     <Content Include="Content\contact.html" />
     <Content Include="Content\css\animate.css" />
@@ -1296,12 +1292,7 @@
     <Content Include="Content\services.html" />
     <Content Include="Content\single-post.html" />
     <Content Include="Content\style.css" />
-    <Content Include="elements.html" />
     <Content Include="Global.asax" />
-    <Content Include="index.html" />
-    <Content Include="job-category.html" />
-    <Content Include="job-search.html" />
-    <Content Include="job-single.html" />
     <Content Include="modist\about.html" />
     <Content Include="modist\blog-single.html" />
     <Content Include="modist\blog.html" />
@@ -1384,7 +1375,6 @@
     <Content Include="modist\js\scrollax.min.js" />
     <Content Include="modist\product-single.html" />
     <Content Include="modist\shop.html" />
-    <Content Include="pricing-plan.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
