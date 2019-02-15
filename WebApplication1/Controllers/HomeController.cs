@@ -88,7 +88,7 @@ namespace WebApplication1.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Contact()
         {
             return View();
