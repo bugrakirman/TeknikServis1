@@ -15,7 +15,7 @@ namespace TeknikServis.DAL
         {
         }
 
-        public virtual DbSet<Ariza> Categories { get; set; }
+        public virtual DbSet<Malfunction> Categories { get; set; }
         
     }
 }

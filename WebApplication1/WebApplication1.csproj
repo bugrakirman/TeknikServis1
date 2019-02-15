@@ -1793,7 +1793,8 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_UserLayout.cshtml" />
-    <Content Include="Views\Home\ArizaKayit.cshtml" />
+    <Content Include="Views\Home\Malfunction.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1806,6 +1807,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TeknikServis.BLL\TeknikServis.BLL.csproj">
+      <Project>{15149C08-508C-4710-9E1C-E4B71321BBE9}</Project>
+      <Name>TeknikServis.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TeknikServis.Models\TeknikServis.Models.csproj">
       <Project>{0c00bf44-a4df-4947-b820-ce735aa6103e}</Project>
       <Name>TeknikServis.Models</Name>

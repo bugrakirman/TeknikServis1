@@ -48,6 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201902150641520_a1.cs" />
+    <Compile Include="Migrations\201902150641520_a1.Designer.cs">
+      <DependentUpon>201902150641520_a1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -60,6 +65,11 @@
       <Project>{0c00bf44-a4df-4947-b820-ce735aa6103e}</Project>
       <Name>TeknikServis.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201902150641520_a1.resx">
+      <DependentUpon>201902150641520_a1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using TeknikServis.BLL.Helpers;
+using TeknikServis.BLL.Repositories;
 using TeknikServis.Models.Entities;
-using 
+using TeknikServis.Models.ViewModels;
 
 namespace WebApplication1.Controllers
 {
@@ -16,27 +20,42 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public async Task<ActionResult> ArizaKayit(Ariza model)
+        [HttpGet]
+        public ActionResult Malfunction()
         {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Malfunction(MalfunctionViewModel model)
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Add(MalfunctionViewModel model)
+        {
+
             try
             {
-                var userManager = NewUserManager();
-                var user = await userManager.FindByIdAsync(model.UserProfileViewModel.Id);
-
-                user.Name = model.UserProfileViewModel.Name;
-                user.Surname = model.UserProfileViewModel.Surname;
-                user.PhoneNumber = model.UserProfileViewModel.PhoneNumber;
-                if (user.Email != model.UserProfileViewModel.Email)
+                var data = new Malfunction()
                 {
-                    //todo tekrar aktivasyon maili gönderilmeli. rolü de aktif olmamış role çevrilmeli.
-                }
-                user.Email = model.UserProfileViewModel.Email;
+                    Message = model.Message,
+                    Type = model.Type,
+                    BrandType = model.BrandType
+                };
 
-                if (model.UserProfileViewModel.PostedFile != null &&
-                    model.UserProfileViewModel.PostedFile.ContentLength > 0)
+                if (model.PostedFile != null &&
+                    model.PostedFile.ContentLength > 0)
                 {
-                    var file = model.UserProfileViewModel.PostedFile;
+                    var file = model.PostedFile;
                     string fileName = Path.GetFileNameWithoutExtension(file.FileName);
                     string extName = Path.GetExtension(file.FileName);
                     fileName = StringHelpers.UrlFormatConverter(fileName);
@@ -52,18 +71,27 @@ namespace WebApplication1.Controllers
                     img.Resize(250, 250, false);
                     img.AddTextWatermark("Wissen");
                     img.Save(dosyayolu);
-                    user.AvatarPath = "/Upload/" + fileName + extName;
+                    data.AvatarPath = "/Upload/" + fileName + extName;
+                    
                 }
 
+                
 
-                await userManager.UpdateAsync(user);
-                TempData["Message"] = "Güncelleme işlemi başarılı";
-                return RedirectToAction("UserProfile");
+                var a = new MalfunctionRepo().Insert(data);
+
+                TempData["Message"] = $"Kaydınız Alınmıştır";
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index");
             }
+        }
+
+        [HttpPost]
+        public ActionResult Contact()
+        {
+            return View();
         }
     }
 }
