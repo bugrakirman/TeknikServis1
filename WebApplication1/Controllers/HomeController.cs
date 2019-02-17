@@ -13,6 +13,8 @@ using TeknikServis.Models.ViewModels;
 
 namespace WebApplication1.Controllers
 {
+
+    
     public class HomeController : Controller
     {
         // GET: Home
@@ -20,25 +22,25 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        [Authorize]
         [HttpGet]
         public ActionResult Malfunction()
         {
             return View();
         }
-
-
+        [Authorize]
         [HttpPost]
         public ActionResult Malfunction(MalfunctionViewModel model)
         {
             return View();
         }
+        [Authorize]
         [HttpGet]
         public ActionResult Add()
         {
             return View();
         }
-
-
+        [Authorize]
         [HttpPost]
         public ActionResult Add(MalfunctionViewModel model)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -8,11 +9,12 @@ using TeknikServis.Models.Entities;
 
 namespace TeknikServis.DAL
 {
-    public class MyContext : DbContext
+    public class MyContext : IdentityDbContext
     {
         public MyContext()
             : base("name=MyCon")
         {
+
         }
 
         public virtual DbSet<Malfunction> Categories { get; set; }
