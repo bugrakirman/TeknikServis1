@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="~/modist/css/flaticon.css">
     <link rel="stylesheet" href="~/modist/css/icomoon.css">
     <link rel="stylesheet" href="~/modist/css/style.css">
+    @RenderSection("css", required: false)
 </head>
 
 <body>
@@ -154,5 +155,6 @@
     <script src="~/modist/js/bootstrap-datepicker.js"></script>
     <script src="~/modist/js/scrollax.min.js"></script>
     <script src="~/modist/js/main.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
