@@ -34,7 +34,7 @@ namespace WebApplication1.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("Register","Home", model);
+                return View("Register", "Account", model);
             }
             try
             {
@@ -46,7 +46,7 @@ namespace WebApplication1.Controllers
                 if (user != null)
                 {
                     ModelState.AddModelError("UserName", "daha önce alınmış");
-                    return View("Register", model);
+                    return View("Register","Account", model);
                 }
 
                 var newUser =  new User()
@@ -77,7 +77,7 @@ namespace WebApplication1.Controllers
                         err += resultError + " ";
                     }
                     ModelState.AddModelError("",err);
-                    return View("Register", model);
+                    return View("Register", "Account", model);
                 }
                 TempData["Message"] = "kaydiniz alinmistir giris yapiniz";
                 return RedirectToAction("Login","Account");
