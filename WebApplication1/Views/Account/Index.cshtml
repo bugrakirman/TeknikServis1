@@ -1,4 +1,6 @@
-﻿@model TeknikServis.Models.ViewModels.LoginViewModel
+﻿
+
+@model TeknikServis.Models.ViewModels.LoginViewModel
 @{
     Layout = null;
 }
@@ -74,7 +76,7 @@
                                         <button class="btn btn-info" id="to-recover" type="button"><i class="fa fa-lock m-r-5"></i> Sifremi Unuttum?</button>
                                         <a class="btn btn-cyan float-right" href="@Url.Action("Register","Account")">
                                             Kayıt Ol
-                                        </a> 
+                                        </a>
                                         <button class="btn btn-success float-right" type="submit">Giris</button>
 
                                     </div>
@@ -92,9 +94,9 @@
                         <!-- Form -->
                         @using (Html.BeginForm("Login", "Account", FormMethod.Post))
                         {
-                            @*<div class="input-group-prepend">
+                            <div class="input-group-prepend">
                                 <span class="input-group-text bg-danger text-white" id="basic-addon1"><i class="ti-email"></i></span>
-                            </div>*@
+                            </div>
                             <input type="text" class="form-control form-control-lg" placeholder="Email Address">
                             <div class="row m-t-20 p-t-20 border-top border-secondary">
                                 <div class="col-12">

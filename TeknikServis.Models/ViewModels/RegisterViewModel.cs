@@ -20,10 +20,7 @@ namespace TeknikServis.Models.ViewModels
         [Required]
         [Display(Name = "Kullanıcı Adı")]
         public string UserName { get; set; }
-        [Required]
-        [Display(Name = "E-mail")]
-        public string Email { get; set; }
-        [StringLength(20,MinimumLength =5,ErrorMessage ="en az 5 karakter olmali")]
+        [StringLength(20, MinimumLength = 5, ErrorMessage = "en az 5 karakter olmali")]
         [Required]
         [Display(Name = "Parola")]
         [DataType(DataType.Password)]
@@ -31,8 +28,37 @@ namespace TeknikServis.Models.ViewModels
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Parola tekrar")]
-        [Compare("Password",ErrorMessage ="Sifreler uyusmuyor")]
+        [Compare("Password", ErrorMessage = "Sifreler uyusmuyor")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        [Display(Name = "E-mail")]
+        public string Email { get; set; }
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "en az 5 karakter olmali")]
+        [Required]
+        [Display(Name = "Telefon")]
+        public string PhoneNumber { get; set; }
+        [Required]
+        [Display(Name = "Doğum Tarihi")]
+        public DateTime BirthDate { get; set; }
+        [StringLength(20)]
+        [Required]
+        [Display(Name = "Cİnsiyet")]
+        public string Gender { get; set; }
+        [StringLength(20)]
+        [Required]
+        [Display(Name = "Ülke")]
+        public string Country { get; set; }
+        [Required]
+        [Display(Name = "Sehir")]
+        public string City { get; set; }
+        [StringLength(20)]
+        [Required]
+        [Display(Name = "Adres")]
+        public string Adress { get; set; }
 
+
+
+
+        
     }
 }
