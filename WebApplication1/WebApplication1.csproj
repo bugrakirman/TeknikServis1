@@ -1830,6 +1830,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

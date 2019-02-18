@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +17,8 @@ namespace WebApplication1.Controllers
         // GET: Account
         public ActionResult Index()
         {
+            if (HttpContext.GetOwinContext().Authentication.User.Identity.IsAuthenticated)
+                return RedirectToAction("Index","Home");
             return View();
         }
         [HttpGet]
@@ -24,28 +28,117 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Register","Home", model);
+            }
+            try
+            {
+                var userStore = NewUserStore();
+                var userManager = NewUserManager();
+                var roleManager = NewRoleManager();
 
-        //public async Task<ActionResult> Register(RegisterViewModel model)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
+                var user = await userManager.FindByNameAsync(model.UserName);
+                if (user != null)
+                {
+                    ModelState.AddModelError("UserName", "daha önce alınmış");
+                    return View("Register", model);
+                }
 
-        //        return View("Index",model);
-        //    }
+                var newUser =  new User()
+                {
+                     UserName=model.UserName,
+                      Email=model.Email,
+                      Name=model.Name,
+                       Surname=model.Surname 
+                };
+                var result = await userManager.CreateAsync(newUser, model.Password);
+                if (result.Succeeded)
+                {
+                    if (userStore.Users.Count()==1)
+                    {
+                        await userManager.AddToRoleAsync(newUser.Id, "Admin");
+                    }
+                    else
+                    {
+                        await userManager.AddToRoleAsync(newUser.Id, "User");
+                    }
+                    //to do  kullanıcıya mail
+                }
+                else
+                {
+                    var err = "";
+                    foreach (var resultError in result.Errors)
+                    {
+                        err += resultError + " ";
+                    }
+                    ModelState.AddModelError("",err);
+                    return View("Register", model);
+                }
+                TempData["Message"] = "kaydiniz alinmistir giris yapiniz";
+                return RedirectToAction("Login","Account");
+            }
+            catch (Exception ex)
+            {
+                TempData["Model"] = new ErrorViewModel()
+                {
+                    Text = $"bir hata oluştu{ex.Message}",
+                    ActionName = "Register",
+                    ControllerName = "Account",
+                    ErrorCode = 500
+                };
+                return RedirectToAction("Error","Home");
+            }
+        }
 
-        //    var userManager = NewUserManager();
-        //    var roleManager = NewRoleManager();
-
-        //    var rm = RegisterViewModel;
-
-        //    var user = await userManager.FindByNameAsync(rm.UserName);
-        //    if (user != null)
-        //    {
-        //        ModelState.AddModelError("UserName", "daha önce alınmış");
-        //        return View("Index", model);
-        //    }
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View("Index",model);
+                }
+                var userManager = NewUserManager();
+                var user = await userManager.FindAsync(model.UserName, model.Password);
+                if (user==null)
+                {
+                    ModelState.AddModelError("", "kullanici adi veya sifre hatali");
+                    return View("Index",model);
+                }
+                var authManager = HttpContext.GetOwinContext().Authentication;
+                var userIdentity = await userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                authManager.SignIn(new AuthenticationProperties()
+                    {
+                     IsPersistent=model.RememberMe
+                },userIdentity);
+                return RedirectToAction("Index","Home");
+            }
+            catch (Exception ex)
+            {
+                TempData["Model"] = new ErrorViewModel()
+                {
+                    Text = $"bir hata oluştu{ex.Message}",
+                    ActionName = "Register",
+                    ControllerName = "Account",
+                    ErrorCode = 500
+                };
+                return RedirectToAction("Error", "Home");
+            }
+            
+        }
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            var authManager = HttpContext.GetOwinContext().Authentication;
+            authManager.SignOut();
+            return RedirectToAction("Index","Home");
+        }
     }
 }
