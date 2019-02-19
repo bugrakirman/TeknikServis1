@@ -62,8 +62,6 @@ namespace TeknikServis.DAL.Migrations
                         UserName = c.String(nullable: false, maxLength: 256),
                         Name = c.String(),
                         Surname = c.String(),
-                        Password = c.String(),
-                        ConfirmPassword = c.String(),
                         BirthDate = c.DateTime(),
                         Gender = c.String(),
                         Country = c.String(),
