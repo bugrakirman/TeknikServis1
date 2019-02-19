@@ -81,8 +81,9 @@
 
                             <li><a href="@Url.Action("Contact","Home")">ILETISIM</a></li>
                             <li class="menu-btn">
-                                <a href="#" class="login">GIRIS</a>
-                                <a href="#" class="template-btn">UYE OL</a>
+                                <a href="@Url.Action("Index","Account")" class="login">GIRIS</a>
+                                <a type="button" class="logout" href="@Url.Action("Logout","Account")">Logout</a>
+                                <a href="@Url.Action("Register","Account")" class="template-btn">UYE OL</a>
                             </li>
                         </ul>
                     </div>

@@ -29,12 +29,13 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            ViewBag.CountryList = CountryList();
             if (!ModelState.IsValid)
             {
-                return View("Register", "Account", model);
+                return View("Register", model);
             }
             try
             {
@@ -46,15 +47,22 @@ namespace WebApplication1.Controllers
                 if (user != null)
                 {
                     ModelState.AddModelError("UserName", "daha önce alınmış");
-                    return View("Register","Account", model);
+                    return View("Register", model);
                 }
 
-                var newUser =  new User()
+                var newUser = new User()
                 {
-                     UserName=model.UserName,
-                      Email=model.Email,
-                      Name=model.Name,
-                       Surname=model.Surname 
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    Name = model.Name,
+                    Surname = model.Surname,
+                    Adress = model.Adress,
+                    BirthDate = model.BirthDate,
+                    City = model.City,
+                      Country=model.Country,
+                       Gender=model.Gender,
+                         PhoneNumber=model.PhoneNumber,
+                          
                 };
                 var result = await userManager.CreateAsync(newUser, model.Password);
                 if (result.Succeeded)
@@ -77,10 +85,10 @@ namespace WebApplication1.Controllers
                         err += resultError + " ";
                     }
                     ModelState.AddModelError("",err);
-                    return View("Register", "Account", model);
+                    return View("Register", model);
                 }
                 TempData["Message"] = "kaydiniz alinmistir giris yapiniz";
-                return RedirectToAction("Login","Account");
+                return RedirectToAction("Index","Account");
             }
             catch (Exception ex)
             {
@@ -96,7 +104,6 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model)
         {
             try
@@ -138,7 +145,7 @@ namespace WebApplication1.Controllers
         {
             var authManager = HttpContext.GetOwinContext().Authentication;
             authManager.SignOut();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index","Account");
         }
     }
 }

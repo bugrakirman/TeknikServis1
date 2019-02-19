@@ -10,11 +10,12 @@ namespace TeknikServis.Models.IdentityModels
 {
     public class User : IdentityUser
     {
-        [StringLength(50)]
-        [Required]
         public string Name { get; set; }
-        [StringLength(60)]
-        [Required]
         public string Surname { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string Gender { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string Adress { get; set; }
     }
 }
