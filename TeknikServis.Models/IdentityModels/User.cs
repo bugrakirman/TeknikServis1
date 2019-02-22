@@ -17,5 +17,6 @@ namespace TeknikServis.Models.IdentityModels
         public string Country { get; set; }
         public string City { get; set; }
         public string Adress { get; set; }
+        public string ActivationCode { get; set; }
     }
 }

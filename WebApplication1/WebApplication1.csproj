@@ -1421,7 +1421,9 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyProfileController.cs" />
+    <Compile Include="Controllers\OperatorController.cs" />
     <Compile Include="Controllers\PartialController.cs" />
+    <Compile Include="Controllers\TechnicianController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1835,6 +1837,8 @@
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Shared\Partials\_PartialProfile.cshtml" />
     <Content Include="Views\MyProfile\MyProfile.cshtml" />
+    <Content Include="Views\Admin\Users.cshtml" />
+    <Content Include="Views\Account\Activation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1846,6 +1850,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Operator\" />
+    <Folder Include="Views\Technician\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TeknikServis.BLL\TeknikServis.BLL.csproj">

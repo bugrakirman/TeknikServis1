@@ -3,7 +3,7 @@ namespace TeknikServis.DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class a1 : DbMigration
+    public partial class k : DbMigration
     {
         public override void Up()
         {
@@ -67,6 +67,7 @@ namespace TeknikServis.DAL.Migrations
                         Country = c.String(),
                         City = c.String(),
                         Adress = c.String(),
+                        ActivationCode = c.String(),
                         Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
