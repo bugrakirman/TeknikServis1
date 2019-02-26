@@ -1006,6 +1006,7 @@
     <Content Include="Admin\img\notification\4.jpg" />
     <Content Include="Admin\img\notification\5.jpg" />
     <Content Include="Admin\img\notification\6.jpg" />
+    <Content Include="Admin\img\occak.png" />
     <Content Include="Admin\img\product\book-1.jpg" />
     <Content Include="Admin\img\product\book-2.jpg" />
     <Content Include="Admin\img\product\book-3.jpg" />
@@ -1840,6 +1841,9 @@
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Account\Activation.cshtml" />
     <Content Include="Views\Shared\Partials\_PartialEditModal.cshtml" />
+    <Content Include="Views\Operator\Malfunctions.cshtml" />
+    <Content Include="Views\Operator\Index.cshtml" />
+    <Content Include="Views\Technician\TechnicianTrouble.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1851,8 +1855,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Operator\" />
-    <Folder Include="Views\Technician\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TeknikServis.BLL\TeknikServis.BLL.csproj">

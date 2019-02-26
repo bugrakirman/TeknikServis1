@@ -3,7 +3,7 @@ namespace TeknikServis.DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class k : DbMigration
+    public partial class a1 : DbMigration
     {
         public override void Up()
         {

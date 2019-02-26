@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TeknikServis.BLL.Repositories;
+using TeknikServis.Models.Entities;
 
 namespace WebApplication1.Controllers
 {
@@ -22,13 +24,14 @@ namespace WebApplication1.Controllers
                 new SelectListItem{Text="ABD",Value="AB"}
 
             };
-
-
-
             return list;
-
-
-
+        }
+        protected List<Malfunction> Malfunctions()
+        {
+            var malfunctions = new MalfunctionRepo().GetAll().OrderBy(x=>x.Type).ToList();
+            var list = new List<Malfunction>();
+            list.AddRange(malfunctions);
+            return list;
         }
     }
 }

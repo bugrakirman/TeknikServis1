@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
-    public class TechnicianController : Controller
+    public class TechnicianController : BaseController
     {
         // GET: Technician
-        public ActionResult Index()
+        public ActionResult TechnicianTrouble()
         {
             return View();
         }

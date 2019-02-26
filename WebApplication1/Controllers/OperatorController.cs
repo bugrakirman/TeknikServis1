@@ -6,11 +6,16 @@ using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
-    public class OperatorController : Controller
+    public class OperatorController : BaseController
     {
         // GET: Operator
         public ActionResult Index()
         {
+            return View();
+        }
+        public ActionResult Malfunctions()
+        {
+            ViewBag.Malfunctions = Malfunctions();
             return View();
         }
     }
